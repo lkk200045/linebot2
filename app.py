@@ -403,15 +403,11 @@ def handle_message(event):
     		)
     	line_bot_api.reply_message(event.reply_token, message)
     elif a == '貼圖':
-    	package_id = "1"
-    	sticker_id = "1"
-    	# package_id = "1181660"
-    	# sticker_id = "7389429"
-    	try:
-    		line_bot_api.push_message(to, StickerSendMessage(package_id=package_id, sticker_id=sticker_id))
-    	except LineBotApiError as e:
-    	# error handle
-    	raise e
+    	message = StickerSendMessage(
+    		package_id='1',
+    		ticker_id='1'
+    		)
+    	line_bot_api.reply_message(event.reply_token, message)
 
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
