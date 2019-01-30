@@ -68,6 +68,9 @@ def luis(query):
     elif query == "地址"  :
         a = '地址'
         return a
+    elif query == "貼圖"  :
+        a = '貼圖'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -399,6 +402,16 @@ def handle_message(event):
     		longitude= 120.265875
     		)
     	line_bot_api.reply_message(event.reply_token, message)
+    elif a == '貼圖':
+    	package_id = "1"
+    	sticker_id = "1"
+    	# package_id = "1181660"
+    	# sticker_id = "7389429"
+    	try:
+    		line_bot_api.push_message(to, StickerSendMessage(package_id=package_id, sticker_id=sticker_id))
+    	except LineBotApiError as e:
+    	# error handle
+    	raise e
 
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
