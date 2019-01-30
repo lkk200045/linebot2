@@ -1,0 +1,12 @@
+-----------------上傳教學------------------------
+git add 檔案名
+
+git commit -m "專案名"
+
+git push -u origin master
+
+--------------------------------------
+heroku上傳指令
+heroku git:remote -a linebothuang
+
+git push heroku master

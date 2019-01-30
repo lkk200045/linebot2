@@ -12,7 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
-    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate
+    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate,LocationSendMessage
 )
 
 headers = {
@@ -388,6 +388,14 @@ def handle_message(event):
         )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif a == "地址":
+    	message = LocationSendMessage(
+    		title='my location',
+    		address='Tokyo',
+    		latitude=35.65910807942215,
+    		longitude=139.70372892916203
+    		)
+    	line_bot_api.reply_message(event.reply_token, message)
 
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
