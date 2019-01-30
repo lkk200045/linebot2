@@ -393,10 +393,10 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,Carousel_template)
     elif a == '地址':
     	message = LocationSendMessage(
-    		title='my location',
-    		address='Tokyo',
-    		latitude=35.65910807942215,
-    		longitude=139.70372892916203
+    		title='中山大學',
+    		address='中山大學',
+    		latitude=22.626564,
+    		longitude= 120.265875
     		)
     	line_bot_api.reply_message(event.reply_token, message)
 
